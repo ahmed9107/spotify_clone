@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:spotify_clone/pages/home_page.dart';
-import 'package:spotify_clone/theme/colors.dart';
+import 'package:spotify_clone/view/pages/home_page.dart';
+import 'package:spotify_clone/utils/colors.dart';
 
 class Layout extends StatefulWidget {
   @override

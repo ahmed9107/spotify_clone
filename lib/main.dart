@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_clone/pages/root_app.dart';
+import 'package:spotify_clone/view/pages/layout.dart';
 
 void main() {
   runApp(MaterialApp(

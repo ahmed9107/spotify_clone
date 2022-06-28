@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:spotify_clone/json/songs_json.dart';
-import 'package:spotify_clone/pages/music_detail_page.dart';
-import 'package:spotify_clone/theme/colors.dart';
+import 'package:spotify_clone/data/songs.dart';
+import 'package:spotify_clone/view/pages/music_detail_page.dart';
+import 'package:spotify_clone/utils/colors.dart';
 
 class AlbumPage extends StatefulWidget {
   final dynamic song;
 
-  const AlbumPage({Key key, this.song}) : super(key: key);
+  const AlbumPage({Key? key, this.song}) : super(key: key);
   @override
   _AlbumPageState createState() => _AlbumPageState();
 }
@@ -38,7 +37,7 @@ class _AlbumPageState extends State<AlbumPage> {
                         image: AssetImage(widget.song['img']),
                         fit: BoxFit.cover)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
@@ -66,7 +65,7 @@ class _AlbumPageState extends State<AlbumPage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               SingleChildScrollView(
@@ -104,7 +103,7 @@ class _AlbumPageState extends State<AlbumPage> {
                                     color: primary,
                                     borderRadius: BorderRadius.circular(10)),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Text(
@@ -114,10 +113,10 @@ class _AlbumPageState extends State<AlbumPage> {
                                     color: white,
                                     fontWeight: FontWeight.w600),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
-                              Container(
+                              SizedBox(
                                 width: size.width - 210,
                                 child: Row(
                                   mainAxisAlignment:
@@ -152,7 +151,7 @@ class _AlbumPageState extends State<AlbumPage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Column(
@@ -177,14 +176,14 @@ class _AlbumPageState extends State<AlbumPage> {
                     },
                     child: Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: (size.width - 60) * 0.77,
                           child: Text(
                             "${index + 1}  " + songAlbums[index]['title'],
                             style: TextStyle(color: white),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: (size.width - 60) * 0.23,
                           height: 50,
                           child: Row(
@@ -232,7 +231,7 @@ class _AlbumPageState extends State<AlbumPage> {
                     }),
                 IconButton(
                     icon: Icon(
-                      Feather.more_vertical,
+                      Icons.more_vert,
                       color: white,
                     ),
                     onPressed: () {

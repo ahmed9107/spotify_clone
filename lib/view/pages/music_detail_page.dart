@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:spotify_clone/theme/colors.dart';
+import 'package:spotify_clone/utils/colors.dart';
 
 class MusicDetailPage extends StatefulWidget {
   final String title;
@@ -14,12 +12,12 @@ class MusicDetailPage extends StatefulWidget {
   final String songUrl;
 
   const MusicDetailPage(
-      {Key key,
-      this.title,
-      this.description,
-      this.color,
-      this.img,
-      this.songUrl})
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.color,
+      required this.img,
+      required this.songUrl})
       : super(key: key);
   @override
   _MusicDetailPageState createState() => _MusicDetailPageState();
@@ -29,20 +27,19 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   double _currentSliderValue = 20;
 
   // audio player here
-  AudioPlayer advancedPlayer;
-  AudioCache audioCache;
+  AudioPlayer? advancedPlayer;
+  AudioCache? audioCache;
   bool isPlaying = true;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initPlayer();
   }
 
   initPlayer() {
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    advancedPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: advancedPlayer);
     playSound(widget.songUrl);
   }
 
@@ -59,12 +56,11 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   seekSound() async {
     File audioFile = await audioCache.load(widget.songUrl);
     await advancedPlayer.setUrl(audioFile.path);
-    advancedPlayer.seek(Duration(milliseconds: 2000));
+    advancedPlayer.seek(const Duration(milliseconds: 2000));
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     stopSound(widget.songUrl);
   }
@@ -73,7 +69,18 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: black,
-      appBar: getAppBar(),
+      appBar: AppBar(
+        backgroundColor: black,
+        elevation: 0,
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.more_vert,
+                color: white,
+              ),
+              onPressed: null)
+        ],
+      ),
       body: getBody(),
     );
   }
@@ -85,7 +92,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
       actions: [
         IconButton(
             icon: Icon(
-              Feather.more_vertical,
+              Icons.more_vert,
               color: white,
             ),
             onPressed: null)
@@ -110,7 +117,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                         color: widget.color,
                         blurRadius: 50,
                         spreadRadius: 5,
-                        offset: Offset(-10, 40))
+                        offset: const Offset(-10, 40))
                   ], borderRadius: BorderRadius.circular(20)),
                 ),
               ),
@@ -127,19 +134,19 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Container(
+            child: SizedBox(
               width: size.width - 80,
               height: 70,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Icon(
-                    AntDesign.addfolder,
+                    Icons.add,
                     color: white,
                   ),
                   Column(
@@ -152,7 +159,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                             color: white,
                             fontWeight: FontWeight.bold),
                       ),
-                      Container(
+                      SizedBox(
                         width: 150,
                         child: Text(
                           widget.description,
@@ -165,14 +172,14 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                     ],
                   ),
                   Icon(
-                    Feather.more_vertical,
+                    Icons.more_vert,
                     color: white,
                   ),
                 ],
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Slider(
@@ -186,7 +193,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                 });
                 seekSound();
               }),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -205,7 +212,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Padding(
@@ -215,14 +222,14 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
               children: [
                 IconButton(
                     icon: Icon(
-                      Feather.shuffle,
+                      Icons.shuffle,
                       color: white.withOpacity(0.8),
                       size: 25,
                     ),
                     onPressed: null),
                 IconButton(
                     icon: Icon(
-                      Feather.skip_back,
+                      Icons.skip_previous,
                       color: white.withOpacity(0.8),
                       size: 25,
                     ),
@@ -234,9 +241,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                           BoxDecoration(shape: BoxShape.circle, color: primary),
                       child: Center(
                         child: Icon(
-                          isPlaying
-                              ? Entypo.controller_stop
-                              : Entypo.controller_play,
+                          isPlaying ? Icons.stop : Icons.play_arrow,
                           size: 28,
                           color: white,
                         ),
@@ -257,14 +262,14 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                     }),
                 IconButton(
                     icon: Icon(
-                      Feather.skip_forward,
+                      Icons.skip_next,
                       color: white.withOpacity(0.8),
                       size: 25,
                     ),
                     onPressed: null),
                 IconButton(
                     icon: Icon(
-                      AntDesign.retweet,
+                      Icons.refresh,
                       color: white.withOpacity(0.8),
                       size: 25,
                     ),
@@ -272,18 +277,18 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Feather.tv,
+                Icons.tv,
                 color: primary,
                 size: 20,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Padding(
