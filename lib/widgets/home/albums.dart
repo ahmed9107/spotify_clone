@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
-import '../../../../data/songs.dart';
 import '../../../../utils/colors.dart';
 import '../../view/pages/album_page.dart';
 
 class Albums extends StatelessWidget {
-  const Albums({Key? key}) : super(key: key);
+  final List songsList;
+  const Albums({Key? key, required this.songsList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class Albums extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 30),
         child: Row(
-          children: List.generate(songs.length - 5, (index) {
+          children: List.generate(songsList.length, (index) {
             return Padding(
               padding: const EdgeInsets.only(right: 30),
               child: GestureDetector(
@@ -25,7 +24,7 @@ class Albums extends StatelessWidget {
                       PageTransition(
                           alignment: Alignment.bottomCenter,
                           child: AlbumPage(
-                            song: songs[index],
+                            song: songsList[index],
                           ),
                           type: PageTransitionType.scale));
                 },
@@ -36,28 +35,24 @@ class Albums extends StatelessWidget {
                       height: 180,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(songs[index]['img']),
+                              image: AssetImage(songsList[index]['img']),
                               fit: BoxFit.cover),
                           color: primary,
                           borderRadius: BorderRadius.circular(10)),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     Text(
-                      songs[index]['title'],
+                      songsList[index]['title'],
                       style: TextStyle(
                           fontSize: 15,
                           color: white,
                           fontWeight: FontWeight.w600),
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
+                    const SizedBox(height: 5),
                     SizedBox(
                       width: 180,
                       child: Text(
-                        songs[index]['description'],
+                        songsList[index]['description'],
                         maxLines: 1,
                         textAlign: TextAlign.center,
                         style: TextStyle(

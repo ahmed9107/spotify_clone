@@ -24,44 +24,10 @@ class MusicDetailPage extends StatefulWidget {
 class _MusicDetailPageState extends State<MusicDetailPage> {
   double _currentSliderValue = 20;
 
-  // audio player here
   AudioPlayer? advancedPlayer;
   AudioCache? audioCache;
   bool isPlaying = true;
 
-  @override
-  void initState() {
-    super.initState();
-    //initPlayer();
-  }
-
-  /* initPlayer() {
-    advancedPlayer = AudioPlayer();
-    audioCache = AudioCache(fixedPlayer: advancedPlayer);
-    playSound(widget.songUrl);
-  }
-
-  playSound(localPath) async {
-    await audioCache.play(localPath);
-  }
-
-  stopSound(localPath) async {
-    File audioFile = await audioCache.load(localPath);
-    await advancedPlayer.setUrl(audioFile.path);
-    advancedPlayer.stop();
-  }
-
-  seekSound() async {
-    File audioFile = await audioCache.load(widget.songUrl);
-    await advancedPlayer.setUrl(audioFile.path);
-    advancedPlayer.seek(const Duration(milliseconds: 2000));
-  }
- */
-  @override
-  void dispose() {
-    super.dispose();
-    //stopSound(widget.songUrl);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +155,6 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                 setState(() {
                   _currentSliderValue = value;
                 });
-                //seekSound();
               }),
           const SizedBox(
             height: 20,
@@ -247,12 +212,10 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                     ),
                     onPressed: () {
                       if (isPlaying) {
-                        //stopSound(widget.songUrl);
                         setState(() {
                           isPlaying = false;
                         });
                       } else {
-                        //playSound(widget.songUrl);
                         setState(() {
                           isPlaying = true;
                         });

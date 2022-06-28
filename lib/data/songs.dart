@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const List song_type_1 = [
+const List<String> song_type_1 = [
   "Music",
   "Rock",
   "Soul",
@@ -8,7 +8,7 @@ const List song_type_1 = [
   "Pop",
   "R&B",
 ];
-const List song_type_2 = [
+const List<String> song_type_2 = [
   "Podcasts",
   "Made For You",
   "Charts",
@@ -16,7 +16,8 @@ const List song_type_2 = [
   "Discover",
   "Concerts",
 ];
-const List songs = [
+
+const List<Map> songs = [
   {
     "img": "assets/images/img_3.jpg",
     "title": "Feelin' Good",

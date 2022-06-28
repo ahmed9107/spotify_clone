@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../data/songs.dart';
 import '../../../../utils/colors.dart';
 
-class SongTypes extends StatefulWidget {
+class SongTypes extends StatelessWidget {
+  final void Function(int index)? onTap;
+  final int activeMenu;
+  final List songType;
   const SongTypes({
     Key? key,
+    this.onTap,
+    required this.activeMenu,
+    required this.songType,
   }) : super(key: key);
 
-  @override
-  State<SongTypes> createState() => _SongTypesState();
-}
-
-class _SongTypesState extends State<SongTypes> {
-  int activeMenu = 0;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,15 +26,14 @@ class _SongTypesState extends State<SongTypes> {
             padding: const EdgeInsets.only(right: 25),
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  activeMenu = index;
-                });
+                onTap!(index);
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    song_type_1[index],
+                    //song_type_1[index],
+                    songType[index],
                     style: TextStyle(
                         fontSize: 15,
                         color: activeMenu == index ? primary : grey,
