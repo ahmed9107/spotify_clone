@@ -3,10 +3,10 @@ import 'package:page_transition/page_transition.dart';
 
 import '../../../../data/songs.dart';
 import '../../../../utils/colors.dart';
-import '../../album_page.dart';
+import '../../view/pages/album_page.dart';
 
-class AlbumsTwo extends StatelessWidget {
-  const AlbumsTwo({Key? key}) : super(key: key);
+class Albums extends StatelessWidget {
+  const Albums({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class AlbumsTwo extends StatelessWidget {
                       PageTransition(
                           alignment: Alignment.bottomCenter,
                           child: AlbumPage(
-                            song: songs[index + 5],
+                            song: songs[index],
                           ),
                           type: PageTransitionType.scale));
                 },
@@ -36,7 +36,7 @@ class AlbumsTwo extends StatelessWidget {
                       height: 180,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(songs[index + 5]['img']),
+                              image: AssetImage(songs[index]['img']),
                               fit: BoxFit.cover),
                           color: primary,
                           borderRadius: BorderRadius.circular(10)),
@@ -45,7 +45,7 @@ class AlbumsTwo extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      songs[index + 5]['title'],
+                      songs[index]['title'],
                       style: TextStyle(
                           fontSize: 15,
                           color: white,
@@ -57,7 +57,7 @@ class AlbumsTwo extends StatelessWidget {
                     SizedBox(
                       width: 180,
                       child: Text(
-                        songs[index + 5]['description'],
+                        songs[index]['description'],
                         maxLines: 1,
                         textAlign: TextAlign.center,
                         style: TextStyle(

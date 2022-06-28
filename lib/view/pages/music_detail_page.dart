@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/utils/colors.dart';
@@ -34,10 +32,10 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   @override
   void initState() {
     super.initState();
-    initPlayer();
+    //initPlayer();
   }
 
-  initPlayer() {
+  /* initPlayer() {
     advancedPlayer = AudioPlayer();
     audioCache = AudioCache(fixedPlayer: advancedPlayer);
     playSound(widget.songUrl);
@@ -58,11 +56,11 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
     await advancedPlayer.setUrl(audioFile.path);
     advancedPlayer.seek(const Duration(milliseconds: 2000));
   }
-
+ */
   @override
   void dispose() {
     super.dispose();
-    stopSound(widget.songUrl);
+    //stopSound(widget.songUrl);
   }
 
   @override
@@ -191,7 +189,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                 setState(() {
                   _currentSliderValue = value;
                 });
-                seekSound();
+                //seekSound();
               }),
           const SizedBox(
             height: 20,
@@ -249,12 +247,12 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                     ),
                     onPressed: () {
                       if (isPlaying) {
-                        stopSound(widget.songUrl);
+                        //stopSound(widget.songUrl);
                         setState(() {
                           isPlaying = false;
                         });
                       } else {
-                        playSound(widget.songUrl);
+                        //playSound(widget.songUrl);
                         setState(() {
                           isPlaying = true;
                         });

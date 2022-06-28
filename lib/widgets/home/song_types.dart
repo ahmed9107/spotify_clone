@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../data/songs.dart';
 import '../../../../utils/colors.dart';
 
-class SongTypesTwo extends StatefulWidget {
-  const SongTypesTwo({Key? key}) : super(key: key);
+class SongTypes extends StatefulWidget {
+  const SongTypes({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<SongTypesTwo> createState() => _SongTypesTwoState();
+  State<SongTypes> createState() => _SongTypesState();
 }
 
-class _SongTypesTwoState extends State<SongTypesTwo> {
-  int activeMenu2 = 0;
+class _SongTypesState extends State<SongTypes> {
+  int activeMenu = 0;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,29 +21,29 @@ class _SongTypesTwoState extends State<SongTypesTwo> {
       child: Padding(
         padding: const EdgeInsets.only(left: 30, top: 20),
         child: Row(
-            children: List.generate(song_type_2.length, (index) {
+            children: List.generate(song_type_1.length, (index) {
           return Padding(
             padding: const EdgeInsets.only(right: 25),
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  activeMenu2 = index;
+                  activeMenu = index;
                 });
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    song_type_2[index],
+                    song_type_1[index],
                     style: TextStyle(
                         fontSize: 15,
-                        color: activeMenu2 == index ? primary : grey,
+                        color: activeMenu == index ? primary : grey,
                         fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(
                     height: 3,
                   ),
-                  activeMenu2 == index
+                  activeMenu == index
                       ? Container(
                           width: 10,
                           height: 3,
