@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spotify_clone/data/songs.dart';
 import 'package:spotify_clone/utils/colors.dart';
-import 'package:spotify_clone/widgets/home/albums.dart';
-import 'package:spotify_clone/widgets/home/song_types.dart';
+import 'package:spotify_clone/view/widgets/home/albums.dart';
+import 'package:spotify_clone/view/widgets/home/song_types.dart';
 import '../../provider/provider.dart';
 
 class HomePage extends StatelessWidget {

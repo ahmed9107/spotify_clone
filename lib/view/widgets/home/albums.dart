@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../../../utils/colors.dart';
-import '../../view/pages/album_page.dart';
+import '../../../view/pages/album_page.dart';
 
 class Albums extends StatelessWidget {
   final List songsList;
