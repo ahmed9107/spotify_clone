@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:spotify_clone/data/songs.dart';
 import 'package:spotify_clone/view/pages/music_detail_page.dart';
 import 'package:spotify_clone/utils/colors.dart';
 
@@ -65,7 +64,7 @@ class _AlbumPageState extends State<AlbumPage> {
                   ],
                 ),
               ),
-              const SizedBox(
+              /* const SizedBox(
                 height: 30,
               ),
               SingleChildScrollView(
@@ -150,7 +149,7 @@ class _AlbumPageState extends State<AlbumPage> {
                     }),
                   ),
                 ),
-              ),
+              ), */
               const SizedBox(
                 height: 30,
               ),

@@ -13,4 +13,17 @@ class Model extends ChangeNotifier {
     activeMenu2 = index;
     notifyListeners();
   }
+
+  List bottomNavBaritems = [
+    Icons.home,
+    Icons.search,
+    Icons.book,
+  ];
+
+  int activeTab = 0;
+
+  changeBottomNavBarIndex(int index) {
+    activeTab = index;
+    notifyListeners();
+  }
 }

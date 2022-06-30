@@ -32,7 +32,6 @@ class SongTypes extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    //song_type_1[index],
                     songType[index],
                     style: TextStyle(
                         fontSize: 15,
